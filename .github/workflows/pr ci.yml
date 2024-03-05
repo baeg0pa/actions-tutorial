@@ -16,6 +16,7 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v2
       with:
+        distribution: 'adopt'
         java-version: '17'
 
     - name: Cache SonarCloud packages
@@ -26,7 +27,8 @@ jobs:
         restore-keys: ${{ runner.os }}-sonar
 
     - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@v1
+      #uses: sonarsource/sonarcloud-github-action@v1
+      uses: sonarsource/sonarcloud-github-action@master
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
